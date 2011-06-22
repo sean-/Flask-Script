@@ -2,6 +2,7 @@
 from __future__ import absolute_import
 from __future__ import with_statement
 
+import logging
 import os
 import sys
 import code
@@ -16,6 +17,12 @@ from flask import Flask, _request_ctx_stack
 
 __all__ = ["Command", "Shell", "Server", "Manager", "Option",
            "prompt", "prompt_pass", "prompt_bool", "prompt_choices"]
+
+LOG_FORMAT = (
+    '%(levelname)s in %(module)s [%(pathname)s:%(lineno)d]:\n' +
+    '\t%(message)s'
+    )
+logging.basicConfig(format=LOG_FORMAT)
 
 def prompt(name, default=None):
     
